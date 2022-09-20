@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Views="clr-namespace:AppFit.Views"
+             x:Class="AppFit.MainPage">
+
+    
+    <TabBar>
+        <Tab Title="Cadastro Cliente" Icon="cliente" Route="CadastroAtividade">
+            <ShellContent>
+                
+                <Views:CadastroAtividade Title="Cadastro de Clientes"/>
+            </ShellContent>
+        </Tab>
+        <Tab Title="Lista Clientes"  Icon="lista" Route="MinhasAtividades">
+            <ShellContent>
+                <Views:ListaAtividade Title="Lista de Clientes"/>
+            </ShellContent>
+        </Tab>
+    </TabBar>
+
+</Shell>

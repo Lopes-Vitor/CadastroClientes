@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppFit.Views.ListaAtividade"
+             x:Name="Pagina">  
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Atualizar"
+                     IconImageSource="refresh24"
+                     Command="{Binding AtualizarLista}"
+                     Order="Primary"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout>
+                <SearchBar Placeholder="Busque por nome" Text="{Binding ParametroBusca}"/>
+                <Button Text="Buscar" Command="{Binding BuscarLista}"/>
+            </StackLayout>
+            
+            <RefreshView IsRefreshing="{Binding EstaAtualizando, Mode=OneWay}"
+                         Command="{Binding AtualizarLista}"
+                         Padding="20">
+                <ListView ItemsSource="{Binding ListaAtividades}">
+                    <ListView.Header>
+                        <Grid RowDefinitions="Auto"
+                              ColumnDefinitions="*,*,*">
+                            <Label Grid.Row="0" Grid.Column="0" Text="ID"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="Nome"/>
+                            <Label Grid.Row="0" Grid.Column="2" Text="Data de Nascimento"/>
+                        </Grid>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.ContextActions>
+                                    <MenuItem Text="Detalhes" 
+                                              Command="{Binding Source={x:Reference Pagina}, Path=BindingContext.AbrirDetalhes}"
+                                              CommandParameter="{Binding Id}"/>
+                                    <MenuItem Text="Excluir"
+                                              Command="{Binding Source={x:Reference Pagina}, Path=BindingContext.Remover}"
+                                              CommandParameter="{Binding Id}"/>
+                                </ViewCell.ContextActions>
+                                
+                                <Grid RowDefinitions="Auto"
+                              ColumnDefinitions="*,*,*">
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding Id}"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Nome}"/>
+                                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding  DataNascimento, StringFormat='{}{0:dd/MM/yyyy}'}"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

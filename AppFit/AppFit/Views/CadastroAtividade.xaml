@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppFit.Views.CadastroAtividade">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Novo" Order="Primary" Command="{Binding NovaAtividade}"/>
+
+        <ToolbarItem Text="Salvar"
+                     IconImageSource="salvar24"
+                     Order="Primary"
+                     Command="{Binding SalvarAtividade}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Label Text="ID:"/>
+            <Label Text="{Binding Id}"/>
+
+            <Label Text="Nome:"/>
+            <Entry Text="{Binding Nome}" Placeholder="Digite seu nome"/>
+
+            <Label Text="Data de Nascimento:"/>
+            <DatePicker Format="dd/MM/yyyy" Date="{Binding DataNascimento}"/>
+
+            <Label Text="CPF:"/>
+            <Entry Text="{Binding Cpf}" Keyboard="Numeric" Placeholder="Digite seu CPF"/>
+
+            <Label Text="Cargo:"/>
+            <Entry Text="{Binding Cargo}" Placeholder="Digite seu cargo"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
